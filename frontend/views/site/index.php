@@ -17,14 +17,14 @@ $this->title = 'Aplikasi Disparta';
         <div class="container-fluid">
           <div class="card">
             <div class="card-header card-header-primary">
-              <h3 class="card-title">Notifications</h3>
-              <p class="card-category">Handcrafted by our friend
-                <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the
-                <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a>
+              <h3 class="card-title">Berita Terbaru</h3>
+              <p class="card-category">
+                Dapatkan berita terbaru seputar wisata di Kota Batu
               </p>
             </div>
             <div class="card-body">
-              <div class="row">
+            
+              <!-- <div class="row">
                 <div class="col-md-6">
                   <h4 class="card-title">Notifications Style</h4>
                   <div class="alert alert-info">
@@ -89,6 +89,41 @@ $this->title = 'Aplikasi Disparta';
                       <b> Primary - </b> This is a regular notification made with ".alert-primary"</span>
                   </div>
                 </div>
+              </div> -->
+              <div class="row">
+              <?php foreach($berita as $berita) { ?>
+                <div class="col-lg-4 col-md-10 col-sm-6">
+                  <div class="card" style="width: 18rem;">
+                    <img src="..." class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title"><b><?= $berita->judul_berita ?></b></h5>
+                      <br>
+                      <p class="card-text" align="justify"><?= $berita->deskripsi ?></p>
+                      <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                    </div>
+                  </div>
+                </div>
+              <?php } ?>                  
+                  <!-- <div class="col-lg-4 col-md-10 col-sm-6">
+                    <div class="card" style="width: 18rem;">
+                      <img src="..." class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-lg-4 col-md-10 col-sm-6">
+                    <div class="card" style="width: 18rem;">
+                      <img src="..." class="card-img-top" alt="...">
+                      <div class="card-body">
+                        <h5 class="card-title">Card title</h5>
+                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                      </div>
+                    </div>
+                  </div>                   -->
               </div>
             </div>
             <div class="col-md-12">
@@ -137,10 +172,8 @@ $this->title = 'Aplikasi Disparta';
         </div>
       </div>
     <div class="body-content">
-
-    <p class="lead">Data Kunjungan Anda</p>
-
-        <div class="row">
+    
+        <!-- <div class="row">
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <?php Card::begin([
                     'header'=>'header-icon',
@@ -194,9 +227,9 @@ $this->title = 'Aplikasi Disparta';
                           </div>',
                 ]); Card::end(); ?>
             </div>
-        </div>
+        </div> -->
 
-        <div class="row">
+        <!-- <div class="row">
             <div class="col-lg-4">
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/doc/">Yii Documentation &raquo;</a></p>
             </div>
@@ -206,7 +239,7 @@ $this->title = 'Aplikasi Disparta';
             <div class="col-lg-4">
                 <p><a class="btn btn-default" href="http://www.yiiframework.com/extensions/">Yii Extensions &raquo;</a></p>
             </div>
-        </div>
+        </div> -->
 
     </div>
 

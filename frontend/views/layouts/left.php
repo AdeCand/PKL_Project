@@ -32,7 +32,7 @@
         </a>
         <a href="<?=  Yii::$app->request->baseUrl?>" class="simple-text logo-normal">
             <!-- <?= $config::siteTitle()  ?> -->
-            Aplikasi Disparta
+             Disparta
         </a>
     </div>
     <div class="sidebar-wrapper">

@@ -34,6 +34,8 @@
                     
                     ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
 
+                    ['label' => 'Berita', 'icon' => 'pencil-square-o', 'url' => ['/berita'] ],
+
                     [
                         'label' => 'Data Kunjungan Wisata',
                         'icon' => 'map',

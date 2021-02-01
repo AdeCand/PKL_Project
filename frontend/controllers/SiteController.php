@@ -15,6 +15,7 @@ use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
 use frontend\models\User;
+use frontend\models\Berita;
 
 /**
  * Site controller
@@ -76,10 +77,11 @@ class SiteController extends Controller
     public function actionIndex()
     {
         // $model = User::tableName()->findbypk($id);
+        $berita = Berita::find()->all();   
         if (!Yii::$app->user->IsGuest){   
 
-            return $this->render('index');   
-
+            return $this->render('index', ['berita' => $berita]);
+            
         } else{                           
         
             $this->redirect(array('login'));  
