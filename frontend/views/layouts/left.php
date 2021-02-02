@@ -89,21 +89,28 @@
               <i class="material-icons">person</i>
               <p>User Profile</p>
             </a>
-          </li>
-          <li class="nav-item ">
-            <a class="nav-link" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan' ?>">
-              <i class="material-icons">content_paste</i>
-              <p>Laporan Kunjungan</p>
-            </a>
-          </li>
+          </li>          
          
             <li class="nav-item ">
               <a class="nav-link" href="<?= Yii::$app->request->baseUrl. '/index.php?r=akomodasi' ?>">
-                <i class="material-icons">content_paste</i>
+                <i class="material-icons">flight</i>
                 <p>Akomodasi</p>
               </a>
-            </li>    
-          
+            </li>  
+
+            <li class="nav-item ">
+              <a class="nav-link" href="<?= Yii::$app->request->baseUrl. '/index.php?r=dtw' ?>">
+                <i class="material-icons">account_balance</i>
+                <p>Daya Tarik Wisata</p>
+              </a>
+            </li>  
+
+            <li class="nav-item ">
+              <a class="nav-link" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan' ?>">
+                <i class="material-icons">content_paste</i>
+                <p>Laporan Kunjungan</p>
+              </a>
+            </li>
         </ul>
       </div>
     </div>

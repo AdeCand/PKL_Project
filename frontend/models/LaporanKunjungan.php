@@ -10,8 +10,8 @@ use Yii;
  * @property int $id_laporan_kunjungan
  * @property int $id_user
  * @property string $jenis_wisatawan
- * @property int $negara
- * @property int $provinsi
+ * @property int|null $negara
+ * @property int|null $provinsi
  * @property int $pria
  * @property int $wanita
  * @property int $jumlah
@@ -34,8 +34,8 @@ class LaporanKunjungan extends \yii\db\ActiveRecord
      */
     public function rules()
     {
-        return [    
-            [['id_user', 'jenis_wisatawan', 'negara', 'provinsi', 'pria', 'wanita', 'jumlah'], 'required'],
+        return [
+            [['id_user', 'jenis_wisatawan', 'pria', 'wanita', 'jumlah'], 'required'],
             [['id_user', 'negara', 'provinsi', 'pria', 'wanita', 'jumlah'], 'integer'],
             [['jenis_wisatawan'], 'string', 'max' => 25],
             [['negara'], 'exist', 'skipOnError' => true, 'targetClass' => Negara::className(), 'targetAttribute' => ['negara' => 'id_negara']],
@@ -50,7 +50,7 @@ class LaporanKunjungan extends \yii\db\ActiveRecord
     {
         return [
             'id_laporan_kunjungan' => 'Id Laporan Kunjungan',
-            'id_user' => 'Id User',
+            'id_user' => 'User',
             'jenis_wisatawan' => 'Jenis Wisatawan',
             'negara' => 'Negara',
             'provinsi' => 'Provinsi',

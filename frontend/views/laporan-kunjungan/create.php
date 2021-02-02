@@ -26,9 +26,18 @@ $this->params['breadcrumbs'][] = $this->title;
                   <p class="card-category">Lengkapi Form di bawah ini</p>
                 </div>
                 <div class="card-body">
-                  <form>
+                  <form method="post">
+                  <input type="hidden" name="<?= Yii::$app->request->csrfParam; ?>" value="<?= Yii::$app->request->csrfToken; ?>" />
                     <div class="row">
-                      <div class="col-md-12">
+                    <div class="col-md-12">                        
+                      <?php echo    
+                        $this->render('_form', [
+                            'model' => $model,
+                        ])                       
+                      ?>                      
+                    </div>
+
+                      <!-- <div class="col-md-12">
                         <div class="form-group">
                           <label class="bmd-label-floating">Dtw/Akomodasi</label>
                           <input type="text" class="form-control">
@@ -36,13 +45,11 @@ $this->params['breadcrumbs'][] = $this->title;
                       </div>
                       
                       <div class="col-md-12">
-                        <div class="box box-primary">
-                                                  
+                        <div class="box box-primary">                                                  
                           <?php $form = ActiveForm::begin(); ?>
                             <?= $form->field($model, 'jenis_wisatawan')->dropDownList(['Wisatawan Asing' => 'Wisatawan Asing', 
-                            'Wisatawan  Lokal' => 'Wisatawan Lokal'], ['prompt' => 'Pilih Jenis Wisatawan']) ?>
-                          <?php ActiveForm::end(); ?>
-                        
+                            'Wisatawan Nusantara' => 'Wisatawan Lokal'], ['prompt' => 'Pilih Jenis Wisatawan']) ?>
+                          <?php ActiveForm::end(); ?>                        
                         </div>
                       </div>
                      
@@ -84,12 +91,7 @@ $this->params['breadcrumbs'][] = $this->title;
                           <input type="text" class="form-control">
                         </div>
                       </div>
-                    <?php $form = ActiveForm::begin(); ?>
-                      </div>                    
-                        <?= Html::submitButton('Tambah', ['class' => 'btn btn-primary']) ?>
-                        <div class="clearfix">                        
-                      </div>
-                    <?php ActiveForm::end(); ?>
+                      -->
                   </form>
                 </div>
               </div>
@@ -97,9 +99,5 @@ $this->params['breadcrumbs'][] = $this->title;
             </div>
         </div>
     </div>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+   
 </div>

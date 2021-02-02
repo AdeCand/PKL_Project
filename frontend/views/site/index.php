@@ -99,7 +99,7 @@ $this->title = 'Aplikasi Disparta';
                       <h5 class="card-title"><b><?= $berita->judul_berita ?></b></h5>
                       <br>
                       <p class="card-text" align="justify"><?= $berita->deskripsi ?></p>
-                      <a href="#" class="btn btn-primary">Baca Selengkapnya</a>
+                      <a href="#" class="btn btn-info">Baca Selengkapnya</a>
                     </div>
                   </div>
                 </div>
@@ -126,7 +126,7 @@ $this->title = 'Aplikasi Disparta';
                   </div>                   -->
               </div>
             </div>
-            <div class="col-md-12">
+            <!-- <div class="col-md-12">
               <div class="places-buttons">
                 <div class="row">
                   <div class="col-md-6 ml-auto mr-auto text-center">
@@ -167,7 +167,7 @@ $this->title = 'Aplikasi Disparta';
                   </div>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>

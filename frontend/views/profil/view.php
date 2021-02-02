@@ -6,7 +6,12 @@ use yii\widgets\DetailView;
 /* @var $this yii\web\View */
 /* @var $model frontend\models\User */
 
-$this->title = $model->username;
+if(!$model->nama_akomodasi == null){
+    $this->title = $model->nama_akomodasi;
+} else {
+    $this->title = $model->nama_dtw;
+}
+
 $this->params['breadcrumbs'][] = ['label' => 'Users', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);

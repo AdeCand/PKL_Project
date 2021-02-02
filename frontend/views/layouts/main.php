@@ -44,7 +44,7 @@ if (class_exists('rce\material\Assets')) {
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-	<body class="sidebar-mini">
+	<body>
 		<?php $this->beginBody() ?>
 		  <div class="wrapper ">
 		    <?= $this->render(

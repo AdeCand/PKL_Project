@@ -5,6 +5,7 @@ use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use yii\frontend\models\LaporanKunjungan;
 
+
 /* @var $this yii\web\View */
 /* @var $model frontend\models\LaporanKunjungan */
 /* @var $form yii\widgets\ActiveForm */
@@ -12,25 +13,56 @@ use yii\frontend\models\LaporanKunjungan;
 
 <div class="laporan-kunjungan-form">
 
+    <?php
+    /*
+        $negara = Negara::find()->all(); 
+        $listData = ArrayHelper::map($negara,'negara', 'kawasan'); */ ?>
+    
     <?php $form = ActiveForm::begin(); ?>
 
-    <!-- <?= $form->field($model, 'id_user')->textInput() ?> -->
-
+   <?= $form->field($model, 'id_user')->dropDownList( [Yii::$app->user->identity->id => 'User'] ) ?> 
+    
     <?= $form->field($model, 'jenis_wisatawan')->dropDownList(['Wisatawan Asing' => 'Wisatawan Asing', 
-    'Wisatawan  Lokal' => 'Wisatawan Lokal']) ?>
+    'Wisatawan Nusantara' => 'Wisatawan Lokal', ], ['prompt' => 'Pilih Jenis Wisatawan']) ?>
 
-    <?= $form->field($model, 'negara')->textInput() ?>
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group"> 
+            <?= $form->field($model, 'negara')->dropDownList( [1 => 'Malaysia', 2 => 'Inggris'], ['prompt' => 'Select']) ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'provinsi')->textInput() ?>
+    <div class="col-md-6">
+        <div class="form-group"> 
+            <?= $form->field($model, 'provinsi')->dropDownList( [1 => 'Jawa Timur', 2 => 'Jawa Barat'],['prompt' => 'Select']) ?>
+        </div>
+    </div>
+    </div>
+    <br>
+    
+    <div class="row">
+    <div class="col-md-4">
+        <div class="form-group"> 
+            <?= $form->field($model, 'pria')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'pria')->textInput() ?>
+    <div class="col-md-4">
+        <div class="form-group"> 
+            <?= $form->field($model, 'wanita')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'wanita')->textInput() ?>
+    <div class="col-md-4">
+        <div class="form-group"> 
+            <?= $form->field($model, 'jumlah')->textInput() ?>
+        </div>
+    </div>
 
-    <?= $form->field($model, 'jumlah')->textInput() ?>
+    </div>
 
     <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+        <?= Html::submitButton('Simpan', ['class' => 'btn btn-info']) ?>
     </div>
 
     <?php ActiveForm::end(); ?>

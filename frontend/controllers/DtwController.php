@@ -3,20 +3,16 @@
 namespace frontend\controllers;
 
 use Yii;
-use frontend\models\LaporanKunjungan;
-use frontend\models\LaporanKunjunganCari;
+use frontend\models\Dtw;
+use frontend\models\DtwCari;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
-use yii\helpers\ArrayHelper;
-use yii\helpers\VarDumper;
-use frontend\models\Negara;
-use frontend\models\Provisi;
 
 /**
- * LaporanKunjunganController implements the CRUD actions for LaporanKunjungan model.
+ * DtwController implements the CRUD actions for Dtw model.
  */
-class LaporanKunjunganController extends Controller
+class DtwController extends Controller
 {
     /**
      * {@inheritdoc}
@@ -34,34 +30,22 @@ class LaporanKunjunganController extends Controller
     }
 
     /**
-     * Lists all LaporanKunjungan models.
+     * Lists all Dtw models.
      * @return mixed
      */
     public function actionIndex()
-    {
-        $laporan_kunjungan = LaporanKunjungan::find()->all();        
+    {        
+        $dtw = Dtw::find()->all();        
         $no = 1; 
-        $id = Yii::$app->user->identity->id;
-        $query1 = Negara::find()->all();
-        // $listData = ArrayHelper::map($negara,'negara', 'kawasan');
-        $query2 = Negara::find()->select(['id_negara','negara','kawasan'])->all();
-        
-        // $query = "SELECT * FROM laporan_kunjungan INNER JOIN negara, provinsi 
-        // ON laporan_kunjungan.id_laporan = negara.negara, provinsi.provinsi"; 
-        // $nama_negara = Negara::find()->all();
+
         return $this->render('index', [
-            'laporan_kunjungan' => $laporan_kunjungan,
+            'dtw' => $dtw,
             'no' => $no,
-            // 'listData' => $listData,
-            'query1' => $query1,
-            'query2' => $query2,
-            'modelNegara' => $this->findModel($id),
-            // 'nama_negara' => $nama_negara,
         ]);
     }
 
     /**
-     * Displays a single LaporanKunjungan model.
+     * Displays a single Dtw model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -74,26 +58,25 @@ class LaporanKunjunganController extends Controller
     }
 
     /**
-     * Creates a new LaporanKunjungan model.
+     * Creates a new Dtw model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new LaporanKunjungan();
+        $model = new Dtw();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id_dtw]);
         }
 
         return $this->render('create', [
             'model' => $model,
         ]);
-        
     }
 
     /**
-     * Updates an existing LaporanKunjungan model.
+     * Updates an existing Dtw model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -104,7 +87,7 @@ class LaporanKunjunganController extends Controller
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['index']);
+            return $this->redirect(['view', 'id' => $model->id_dtw]);
         }
 
         return $this->render('update', [
@@ -113,7 +96,7 @@ class LaporanKunjunganController extends Controller
     }
 
     /**
-     * Deletes an existing LaporanKunjungan model.
+     * Deletes an existing Dtw model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -127,15 +110,15 @@ class LaporanKunjunganController extends Controller
     }
 
     /**
-     * Finds the LaporanKunjungan model based on its primary key value.
+     * Finds the Dtw model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return LaporanKunjungan the loaded model
+     * @return Dtw the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = LaporanKunjungan::findOne($id)) !== null) {
+        if (($model = Dtw::findOne($id)) !== null) {
             return $model;
         }
 
