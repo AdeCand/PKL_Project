@@ -98,8 +98,8 @@ $this->title = 'Aplikasi Disparta';
                     <div class="card-body">
                       <h5 class="card-title"><b><?= $berita->judul_berita ?></b></h5>
                       <br>
-                      <p class="card-text" align="justify"><?= $berita->deskripsi ?></p>
-                      <a href="#" class="btn btn-info">Baca Selengkapnya</a>
+                      <p class="card-text" align="justify"><?= $berita->deskripsi_singkat ?></p>
+                      <a href="<?= Yii::$app->request->baseUrl. '/index.php?r=site%2Fabout&id='. $berita->id_berita ?>" class="btn btn-info">Baca Selengkapnya</a>
                     </div>
                   </div>
                 </div>

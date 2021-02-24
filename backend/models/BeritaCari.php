@@ -18,7 +18,7 @@ class BeritaCari extends Berita
     {
         return [
             [['id_berita'], 'integer'],
-            [['judul_berita', 'deskripsi', 'gambar', 'tanggal'], 'safe'],
+            [['judul_berita', 'deskripsi_singkat', 'deskripsi', 'gambar', 'tanggal'], 'safe'],
         ];
     }
 
@@ -63,6 +63,7 @@ class BeritaCari extends Berita
         ]);
 
         $query->andFilterWhere(['like', 'judul_berita', $this->judul_berita])
+            ->andFilterWhere(['like', 'deskripsi_singkat', $this->deskripsi_singkat])
             ->andFilterWhere(['like', 'deskripsi', $this->deskripsi])
             ->andFilterWhere(['like', 'gambar', $this->gambar]);
 

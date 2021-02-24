@@ -28,9 +28,10 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id_berita',
             'judul_berita',
+            'deskripsi_singkat',
             'deskripsi:ntext',
             'gambar',
-            'tanggal',
+            //'tanggal',
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

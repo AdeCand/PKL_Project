@@ -41,10 +41,10 @@ class LaporanKunjunganController extends Controller
     {
         $laporan_kunjungan = LaporanKunjungan::find()->all();        
         $no = 1; 
-        $id = Yii::$app->user->identity->id;
-        $query1 = Negara::find()->all();
+        // $id = Yii::$app->user->identity->id;
+        // $query1 = Negara::find()->all();
         // $listData = ArrayHelper::map($negara,'negara', 'kawasan');
-        $query2 = Negara::find()->select(['id_negara','negara','kawasan'])->all();
+        // $query2 = Negara::find()->select(['id_negara','negara','kawasan'])->all();
         
         // $query = "SELECT * FROM laporan_kunjungan INNER JOIN negara, provinsi 
         // ON laporan_kunjungan.id_laporan = negara.negara, provinsi.provinsi"; 
@@ -53,9 +53,9 @@ class LaporanKunjunganController extends Controller
             'laporan_kunjungan' => $laporan_kunjungan,
             'no' => $no,
             // 'listData' => $listData,
-            'query1' => $query1,
-            'query2' => $query2,
-            'modelNegara' => $this->findModel($id),
+            // 'query1' => $query1,
+            // 'query2' => $query2,
+            // 'modelNegara' => $this->findModel($id),
             // 'nama_negara' => $nama_negara,
         ]);
     }

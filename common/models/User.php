@@ -27,8 +27,9 @@ class User extends ActiveRecord implements IdentityInterface
     const STATUS_DELETED = 0;
     const STATUS_INACTIVE = 9;
     const STATUS_ACTIVE = 10;
-
-
+    const ROLE_USER = 10;
+    const ROLE_ADMIN = 20;
+    public $error_message;
     /**
      * {@inheritdoc}
      */
@@ -55,6 +56,8 @@ class User extends ActiveRecord implements IdentityInterface
         return [
             ['status', 'default', 'value' => self::STATUS_INACTIVE],
             ['status', 'in', 'range' => [self::STATUS_ACTIVE, self::STATUS_INACTIVE, self::STATUS_DELETED]],
+            ['role', 'default', 'value' => 10],
+            ['role', 'in', 'range' => [self::ROLE_USER, self::ROLE_ADMIN]],
         ];
     }
 
@@ -208,5 +211,25 @@ class User extends ActiveRecord implements IdentityInterface
     public function removePasswordResetToken()
     {
         $this->password_reset_token = null;
+    }
+
+    public static function isUserAdmin($username)
+    {
+      if (static::findOne(['username' => $username, 'role' => self::ROLE_ADMIN])){                        
+            return true;
+      } else {                        
+            return false;
+      }
+        
+    }
+
+    public static function isUser($username)
+    {
+      if (static::findOne(['username' => $username, 'role' => self::ROLE_USER])){                        
+            return true;
+      } else {                        
+            return false;
+      }
+        
     }
 }

@@ -31,6 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id_berita',
             'judul_berita',
+            'deskripsi_singkat',
             'deskripsi:ntext',
             'gambar',
             'tanggal',

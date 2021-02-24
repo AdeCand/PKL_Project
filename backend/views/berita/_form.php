@@ -14,6 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'judul_berita')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'deskripsi_singkat')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'deskripsi')->textarea(['rows' => 6]) ?>
 
     <?= $form->field($model, 'gambar')->textInput(['maxlength' => true]) ?>

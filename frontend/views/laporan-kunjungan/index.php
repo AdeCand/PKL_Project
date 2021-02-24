@@ -23,21 +23,21 @@ $this->params['breadcrumbs'][] = $this->title;
             
               <div class="card">
                 <div class="card-header card-header-primary">
-                <table>
-                  <tr>
-                    <td><h4 class="card-title"><b>Data Laporan Kunjungan</b></h4></td>
-              
-                    <td class="col-md-1"><?= Html::a('&nbsp Tambah Data', ['create'], ['class' => 'btn fa fa-plus btn-secondary']) ?></td>
-                  </tr>                  
-                  
-                </table>
-                <?php
-                  if(!Yii::$app->user->identity->nama_dtw == null) { ?>
-                    <p class="card-category"><?= Yii::$app->user->identity->nama_dtw; ?> </p>
-                  <?php } else { ?>
-                    <p class="card-category"><?= Yii::$app->user->identity->nama_akomodasi; ?> </p>
-                  <?php } ?>
-                  
+                  <table>
+                    <tr>
+                      <td><h4 class="card-title"><b>Data Laporan Kunjungan</b></h4></td>
+                
+                      <td class="col-md-1"><?= Html::a('&nbsp Tambah Data', ['create'], ['class' => 'btn fa fa-plus btn-secondary']) ?></td>
+                    </tr>                  
+                    
+                  </table>
+                  <?php
+                    if(!Yii::$app->user->identity->nama_dtw == null) { ?>
+                      <p class="card-category"><?= Yii::$app->user->identity->nama_dtw; ?> </p>
+                    <?php } else { ?>
+                      <p class="card-category"><?= Yii::$app->user->identity->nama_akomodasi; ?> </p>
+                    <?php } ?>
+                    
                 </div>
                 <div class="card-body">
                   <div class="table-responsive">

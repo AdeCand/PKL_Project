@@ -1,6 +1,6 @@
 <?php
+use common\models\User;
 namespace frontend\controllers;
-
 use frontend\models\ResendVerificationEmailForm;
 use frontend\models\VerifyEmailForm;
 use Yii;
@@ -30,7 +30,7 @@ class SiteController extends Controller
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['logout', 'signup'],
+                'only' => ['logout', 'signup', 'about'],
                 'rules' => [
                     [
                         'actions' => ['signup'],
@@ -40,7 +40,15 @@ class SiteController extends Controller
                     [
                         'actions' => ['logout'],
                         'allow' => true,
-                        'roles' => ['@'],
+                        'roles' => ['@' ],
+                    ],
+                    [
+                        'actions' => ['about'],
+                        'allow' => true,
+                        'roles' => ['@' ],
+                    //     'matchCallback' => function ($rule, $action){
+                    //         return User::isUserAdmin(Yii::$app->user->identity->username);
+                    //     }
                     ],
                 ],
             ],
@@ -102,11 +110,11 @@ class SiteController extends Controller
         }
         
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
+        if ($model->load(Yii::$app->request->post()) && $model->loginUser()) {
             return $this->goBack();
         } else {
             $model->password = '';
-
+            // $this->addError('error_message', 'Username atau Password salah');
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -157,7 +165,16 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
-        return $this->render('about');
+        $berita = Berita::find()->all();
+        if (!Yii::$app->user->IsGuest){   
+
+            return $this->render('about', ['berita' => $berita]);
+            
+        } else{                           
+        
+            $this->redirect(array('login'));  
+
+        }
     }
 
     /**

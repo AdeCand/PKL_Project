@@ -9,6 +9,7 @@ use Yii;
  *
  * @property int $id_berita
  * @property string $judul_berita
+ * @property string $deskripsi_singkat
  * @property string $deskripsi
  * @property string $gambar
  * @property string $tanggal
@@ -29,10 +30,11 @@ class Berita extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['judul_berita', 'deskripsi', 'gambar', 'tanggal'], 'required'],
+            [['judul_berita', 'deskripsi_singkat', 'deskripsi', 'gambar', 'tanggal'], 'required'],
             [['deskripsi'], 'string'],
             [['tanggal'], 'safe'],
             [['judul_berita', 'gambar'], 'string', 'max' => 50],
+            [['deskripsi_singkat'], 'string', 'max' => 100],
         ];
     }
 
@@ -44,6 +46,7 @@ class Berita extends \yii\db\ActiveRecord
         return [
             'id_berita' => 'Id Berita',
             'judul_berita' => 'Judul Berita',
+            'deskripsi_singkat' => 'Deskripsi Singkat',
             'deskripsi' => 'Deskripsi',
             'gambar' => 'Gambar',
             'tanggal' => 'Tanggal',

@@ -20,7 +20,7 @@ use yii\frontend\models\LaporanKunjungan;
     
     <?php $form = ActiveForm::begin(); ?>
 
-   <?= $form->field($model, 'id_user')->dropDownList( [Yii::$app->user->identity->id => 'User'] ) ?> 
+   <?= $form->field($model, 'id_user')->hiddenInput(['value'=>Yii::$app->user->identity->id])->label(false) ?> 
     
     <?= $form->field($model, 'jenis_wisatawan')->dropDownList(['Wisatawan Asing' => 'Wisatawan Asing', 
     'Wisatawan Nusantara' => 'Wisatawan Lokal', ], ['prompt' => 'Pilih Jenis Wisatawan']) ?>
@@ -28,7 +28,7 @@ use yii\frontend\models\LaporanKunjungan;
     <div class="row">
     <div class="col-md-6">
         <div class="form-group"> 
-            <?= $form->field($model, 'negara')->dropDownList( [1 => 'Malaysia', 2 => 'Inggris'], ['prompt' => 'Select']) ?>
+            <?= $form->field($model, 'negara')->dropDownList( [1 => 'Malaysia', 2 => 'Inggris', 3 => 'Korea Selatan'], ['prompt' => 'Select']) ?>
         </div>
     </div>
 
