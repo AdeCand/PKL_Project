@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\helpers\ArrayHelper;
 use yii\widgets\ActiveForm;
 use yii\frontend\models\LaporanKunjungan;
+use yii\frontend\models\Provinsi;
 
 
 /* @var $this yii\web\View */
@@ -28,13 +29,13 @@ use yii\frontend\models\LaporanKunjungan;
     <div class="row">
     <div class="col-md-6">
         <div class="form-group"> 
-            <?= $form->field($model, 'negara')->dropDownList( [1 => 'Malaysia', 2 => 'Inggris', 3 => 'Korea Selatan'], ['prompt' => 'Select']) ?>
+            <?= $form->field($model, 'negara')->dropDownList( [1 => 'Malaysia', 2 => 'Inggris', 3 => 'Korea Selatan'], ['prompt' => 'Select']) ?>            
         </div>
     </div>
 
     <div class="col-md-6">
         <div class="form-group"> 
-            <?= $form->field($model, 'provinsi')->dropDownList( [1 => 'Jawa Timur', 2 => 'Jawa Barat'],['prompt' => 'Select']) ?>
+            <?= $form->field($model, 'provinsi')->dropDownList( [1 => 'Jawa Timur', 2 => 'Jawa Barat'],['prompt' => 'Pilih Provinsi']) ?>
         </div>
     </div>
     </div>

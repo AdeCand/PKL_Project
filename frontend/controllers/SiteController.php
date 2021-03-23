@@ -163,17 +163,13 @@ class SiteController extends Controller
      *
      * @return mixed
      */
-    public function actionAbout()
+    public function actionAbout($id)
     {
-        $berita = Berita::find()->all();
+        $berita = Berita::find()->where(['id_berita'=> $id])->one();
         if (!Yii::$app->user->IsGuest){   
-
             return $this->render('about', ['berita' => $berita]);
-            
         } else{                           
-        
             $this->redirect(array('login'));  
-
         }
     }
 

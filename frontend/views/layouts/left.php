@@ -93,7 +93,7 @@
          
             <li class="nav-item ">
               <a class="nav-link" href="<?= Yii::$app->request->baseUrl. '/index.php?r=akomodasi' ?>">
-                <i class="material-icons">flight</i>
+                <i class="material-icons">hotel</i>
                 <p>Akomodasi</p>
               </a>
             </li>  

@@ -35,6 +35,8 @@ class Berita extends \yii\db\ActiveRecord
             [['tanggal'], 'safe'],
             [['judul_berita', 'gambar'], 'string', 'max' => 50],
             [['deskripsi_singkat'], 'string', 'max' => 100],
+            ['image', 'file','types'=>'jpg, gif, png', 'allowEmpty'=>true, 'on'=>'update'],
+            ['title, image', 'length', 'max'=>255, 'on'=>'insert,update'], 
         ];
     }
 

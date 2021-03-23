@@ -41,6 +41,8 @@ class User extends \yii\db\ActiveRecord
             [['username'], 'unique'],
             [['email'], 'unique'],
             [['password_reset_token'], 'unique'],
+            ['image', 'file','types'=>'jpg, gif, png', 'allowEmpty'=>true, 'on'=>'update'],
+            ['title, image', 'length', 'max'=>255, 'on'=>'insert,update'], 
         ];
     }
 

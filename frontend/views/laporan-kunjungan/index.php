@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <tr>
                       <td><h4 class="card-title"><b>Data Laporan Kunjungan</b></h4></td>
                 
-                      <td class="col-md-1"><?= Html::a('&nbsp Tambah Data', ['create'], ['class' => 'btn fa fa-plus btn-secondary']) ?></td>
+                      <td class="col-md-1"><?= Html::a('&nbsp Tambah', ['create'], ['class' => 'btn fa fa-plus btn-secondary']) ?></td>
                     </tr>                  
                     
                   </table>
@@ -65,7 +65,7 @@ $this->params['breadcrumbs'][] = $this->title;
                           Jumlah
                         </th>
                         <th>
-                          Action
+                          
                         </th>
                       </thead>
                       <tbody>
@@ -83,8 +83,13 @@ $this->params['breadcrumbs'][] = $this->title;
                         </td>
                       <?php }
                       */
+                      
                       foreach($laporan_kunjungan as $laporan) 
-                      { ?>                                                        
+                      { 
+                        if ( Yii::$app->user->identity->id) {
+                          # code...
+                        
+                        ?>                                                        
                         <tr>                                                        
                                 <td>
                                     <?= $no++; ?>
@@ -93,7 +98,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?= $laporan->jenis_wisatawan ?>
                                 </td>
                                 <td>
-                                    <?= $laporan->negara?>
+                                    <?= $laporan['negara']?>
                                 </td>
                                 <td>
                                     <?= $laporan['provinsi'] ?>
@@ -108,12 +113,22 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?= $laporan->jumlah ?>
                                 </td> 
                                 <td>
-                                  <a class="btn btn-info btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fview&id='. $laporan->id_laporan_kunjungan ?>" type="button" >detail</a>
-                                  <a class="btn btn-secondary btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fupdate&id='. $laporan->id_laporan_kunjungan ?>" type="button" >edit</a>
-                                  <a class="btn btn-danger btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fdelete&id='. $laporan->id_laporan_kunjungan ?>" type="button" >hapus</a>
+                                  <a class="btn btn-info btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fview&id='. $laporan->id_laporan_kunjungan ?>">
+                                    <span class="material-icons" alt="detail">visibility</span>
+                                  </a>&nbsp 
+                                  <a class="btn btn-secondary btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fupdate&id='. $laporan->id_laporan_kunjungan ?>" type="button">
+                                    <span class="material-icons">create</span>
+                                  </a>&nbsp 
+                                  <a class="btn btn-danger btn-sm" method="post" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fdelete&id='. $laporan->id_laporan_kunjungan ?>" type="button" >
+                                    <span class="material-icons">delete</span>
+                                  </a>
+                                  <!-- <a class="btn btn-info btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fview&id='. $laporan->id_laporan_kunjungan ?>" type="button" >detail</a> -->
+                                  <!-- <a class="btn btn-secondary btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fupdate&id='. $laporan->id_laporan_kunjungan ?>" type="button" >edit</a> -->
+                                  <!-- <a class="btn btn-danger btn-sm" href="<?= Yii::$app->request->baseUrl. '/index.php?r=laporan-kunjungan%2Fdelete&id='. $laporan->id_laporan_kunjungan ?>" type="button" >hapus</a> -->
                                 </td>                       
                         </tr>
-                        <?php }  ?>
+                        <?php }
+                      }  ?>
                         
                       </tbody>
                     </table>

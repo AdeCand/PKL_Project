@@ -36,7 +36,7 @@ class LaporanKunjungan extends \yii\db\ActiveRecord
     {
         return [
             [['id_user', 'jenis_wisatawan', 'pria', 'wanita', 'jumlah'], 'required'],
-            [['id_user', 'negara', 'provinsi', 'pria', 'wanita', 'jumlah'], 'integer'],
+            [['id_user', 'id_negara', 'provinsi', 'pria', 'wanita', 'jumlah'], 'integer'],
             [['jenis_wisatawan'], 'string', 'max' => 25],
             [['negara'], 'exist', 'skipOnError' => true, 'targetClass' => Negara::className(), 'targetAttribute' => ['negara' => 'id_negara']],
             [['provinsi'], 'exist', 'skipOnError' => true, 'targetClass' => Provinsi::className(), 'targetAttribute' => ['provinsi' => 'id_provinsi']],
@@ -65,7 +65,7 @@ class LaporanKunjungan extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getNegara0()
+    public function getNegara()
     {
         return $this->hasOne(Negara::className(), ['id_negara' => 'negara']);
     }
@@ -75,8 +75,13 @@ class LaporanKunjungan extends \yii\db\ActiveRecord
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getProvinsi0()
+    public function getProvinsi()
     {
         return $this->hasOne(Provinsi::className(), ['id_provinsi' => 'provinsi']);
+    }
+
+    public function getId_user()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user']);
     }
 }

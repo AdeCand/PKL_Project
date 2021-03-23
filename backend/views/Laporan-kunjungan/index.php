@@ -7,7 +7,7 @@ use yii\grid\GridView;
 /* @var $searchModel backend\models\LaporanKunjunganCari */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Laporan Kunjungans';
+$this->title = 'Laporan Kunjungan';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="laporan-kunjungan-index">
@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'jenis_wisatawan',
             [
                 'attribute' => 'negara',
-                'value' => 'negara.nama_negara',
+                'value' => 'negara.kawasan',
             ],
             // 'negara',
             'provinsi',

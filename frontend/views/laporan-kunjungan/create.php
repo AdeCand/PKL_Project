@@ -60,14 +60,20 @@ $this->params['breadcrumbs'][] = $this->title;
                           <?php $form = ActiveForm::begin(); ?>
                             <?= $form->field($model, 'negara')->dropDownList([ 1 => 'Malaysia', 
                             'Inggris' => 'Inggris'], ['prompt' => 'Pilih Negara']) ?>
+                            <?= $form->field($model, 'negara')->dropDownList([ 
+                              'attribute' => 'id_negara',
+                              'value' => 'negara.negara',
+                          ], ['prompt' => 'Pilih Negara']) ?>
                           <?php ActiveForm::end(); ?>
                         </div>
                       </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <?php $form = ActiveForm::begin(); ?>
-                            <?= $form->field($model, 'provinsi')->dropDownList([ 2 => 'Jawa Timur', 
-                            'Jawa Barat' => 'Jawa Barat'], ['prompt' => 'Pilih Provinsi']) ?>
+                            <?= $form->field($model, 'provinsi')->dropDownList([ 
+                              'attribute' => 'id_provinsi',
+                              'value' => 'provinsi.provinsi',
+                            ], ['prompt' => 'Pilih Provinsi']) ?>
                           <?php ActiveForm::end(); ?>
                         </div>
                       </div>                      

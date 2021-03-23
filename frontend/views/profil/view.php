@@ -28,7 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
             // 'auth_key',
             // 'password_hash',
             // 'password_reset_token',
-            'email:email',
+            // [
+            //     'label' => 'Provinsi',
+            //     'value' => 'provinsi',
+            // ],
+            'email:email',            
             'nama_dtw',
             'nama_akomodasi',
             // 'status',

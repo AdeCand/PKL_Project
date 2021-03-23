@@ -3,6 +3,7 @@
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
+
 /* @var $this yii\web\View */
 /* @var $model backend\models\Berita */
 /* @var $form yii\widgets\ActiveForm */
@@ -21,6 +22,12 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'gambar')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'tanggal')->textInput() ?>
+
+    <?= $form->labelEx($model, 'image'); ?>
+
+    <?= CHtml::activeFileField($model, 'image'); ?>
+
+    <?= $form->error($model, 'image'); ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

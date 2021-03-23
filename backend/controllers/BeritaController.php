@@ -65,9 +65,24 @@ class BeritaController extends Controller
     public function actionCreate()
     {
         $model = new Berita();
-
+    
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_berita]);
+            if(isset($_POST['Berita']))
+            {
+                $rnd = rand(0,9999);  // generate random number between 0-9999
+                $model->attributes=$_POST['Berita'];
+                
+                $uploadedFile=CUploadedFile::getInstance($model,'image');
+                $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+                $model->image = $fileName;
+                
+                if($model->save())
+                {
+                    $uploadedFile->saveAs(Yii::app()->basePath.'/../img/'.$fileName);  // image will uplode to rootDirectory/banner/
+                    $this->redirect(array('admin'));
+                }
+            }
         }
 
         return $this->render('create', [
@@ -88,6 +103,23 @@ class BeritaController extends Controller
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id_berita]);
+            if(isset($_POST['Berita']))
+            {
+                $_POST['Berita']['image'] = $model->image;
+                $model->attributes=$_POST['Berita'];
+                
+                $uploadedFile=CUploadedFile::getInstance($model,'image');
+                
+                if($model->save())
+                {
+                    if(!empty($uploadedFile))  // check if uploaded file is set or not
+                    {
+                        $uploadedFile->saveAs(Yii::app()->basePath.'/../img/'.$model->image);
+                    }
+                    $this->redirect(array('admin'));
+                }
+
+            }
         }
 
         return $this->render('update', [

@@ -5,6 +5,7 @@ namespace frontend\controllers;
 use Yii;
 use frontend\models\LaporanKunjungan;
 use frontend\models\LaporanKunjunganCari;
+use frontend\models\User;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -38,9 +39,30 @@ class LaporanKunjunganController extends Controller
      * @return mixed
      */
     public function actionIndex()
-    {
-        $laporan_kunjungan = LaporanKunjungan::find()->all();        
+    {   
+        $searchModel = new LaporanKunjunganCari();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);     
+        $laporan_kunjungan = LaporanKunjungan::find()->all();
+        $data = Yii::$app->db->createCommand(
+            "SELECT a.id_laporan_kunjungan as ID, a.id_user as Id_User, a.jenis_wisatawan as jenis, a.pria as pria, a.wanita as wanita, a.jumlah as jumlah, 
+            b.nama_negara as nama FROM laporan_kunjungan a LEFT JOIN negara b ON a.id_laporan_kunjungan = b.id_negara"
+            )->queryAll();
+        // $dataProvider =new yii\data\ArrayDataProvider($data, array(
+        //     'id_laporan_kunjungan'=>'laporan_kunjungan', 
+        //     'sort'=>array(
+        //     'attributes'=>array(
+        //         'ID', 'Id_User', 'jenis', 'pria', 'wanita', 'jumlah', 'nama'
+        //         ),
+        //      ),
+        //         'pagination'=>array(
+        //         'pageSize'=>10,			//records display
+        //       ),
+        //     ));
+                
+        // $query = LaporanKunjungan::model()->with('author')->findAll();
+        $id = Yii::$app->user->identity->id;        
         $no = 1; 
+        $negara = Negara::findOne('negara');
         // $id = Yii::$app->user->identity->id;
         // $query1 = Negara::find()->all();
         // $listData = ArrayHelper::map($negara,'negara', 'kawasan');
@@ -50,8 +72,14 @@ class LaporanKunjunganController extends Controller
         // ON laporan_kunjungan.id_laporan = negara.negara, provinsi.provinsi"; 
         // $nama_negara = Negara::find()->all();
         return $this->render('index', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+            'data' => $data,
             'laporan_kunjungan' => $laporan_kunjungan,
+            'id' => $id,
             'no' => $no,
+            // 'query' => $query,
+            'negara' => $negara,
             // 'listData' => $listData,
             // 'query1' => $query1,
             // 'query2' => $query2,
